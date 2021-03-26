@@ -1,3 +1,4 @@
+
 import static org.junit.Assert.assertTrue;
 
 import java.sql.Date;
@@ -15,7 +16,7 @@ public class Testing_AddressBook
 {
     AddressBook_DB addressBook = new AddressBook_DB() ;
     
-   
+  
          @Test
         public void  givenAddressBookData_WhenReturned_ShouldMatchEntryCount()
         {
@@ -33,7 +34,7 @@ public class Testing_AddressBook
  			Assert.assertTrue(result);
  		}
  		
- 		
+ 	
  				@Test 
  				public void givenDateRange_WhenRetrieved_ShouldMatchContactEntriesCount()
  				{
@@ -44,7 +45,7 @@ public class Testing_AddressBook
  		    		Assert.assertEquals(7, addressBookData.size());
  				}
  				
- 				
+ 			
  				@Test 
  				public void givenCity_WhenRetrieved_ShouldMatchContactEntriesCount()
  				{
@@ -63,7 +64,7 @@ public class Testing_AddressBook
  		    		Assert.assertEquals(7, addressBookData.size());
  				}
 
- 			
+ 		
  				@Test
  				public void givenNewContact_WhenAdded_ShouldSyncWithDatabase() {
  					addressBook.readData();
