@@ -31,13 +31,13 @@ public class AddressBook_DB {
 
 	public void updateAddressBookData(String firstname, String city)
 	{
-		int result = new AddressBook_DataBaseService().updateCityUsingSQL(firstname, city);
+		int result = new AddressBook_DataBaseService().updateEmployeeSalaryResult(firstname, city);
 		if(result == 0) return;
-		AddressBookData addressBookData = this.getAddressBookData(firstname);
-		if(addressBookData != null) addressBookData.setCity(city);
+		AddressBookData AddressBookData = this.getAddressBookData(firstname);
+		if(AddressBookData != null) AddressBookData.setCity(city);
 	}
 	
-	public AddressBookData getAddressBookData(String firstname) {
+	private AddressBookData getAddressBookData(String firstname) {
       AddressBookData addressBookData ;
       addressBookData = this.addressBookList.stream()
     		             .filter(addressBookEntry  ->  (addressBookEntry.getFirstname()).equals(firstname))
@@ -49,8 +49,7 @@ public class AddressBook_DB {
 	public boolean checkAddressBookDataSyncWithDB(String firstname) {
 		try {
 			return addressBookService.getAddressBookData(firstname).get(0).getFirstname().equals(getAddressBookData(firstname).getFirstname());
-		} catch (Exception e) {
-		e.printStackTrace();
+		} catch (IndexOutOfBoundsException e) {
 		}
 		return false;
 	}
@@ -106,21 +105,5 @@ public class AddressBook_DB {
 
 	public long countEntries() {
 	 return addressBookList.size();
-	}
-
-	public void addContactToBook(AddressBookData addressBookData) {
-         this.addContactToAddressBook(addressBookData.getFirstname(), addressBookData.getLastname(), addressBookData.getAddress(),
-        		                      addressBookData.getCity(), addressBookData.getState(), addressBookData.getZip(),
-        		                      addressBookData.getPhonenumber(), addressBookData.getEmail(), addressBookData.getDate());		
-	}
-
-	public void updateAddressBookDataJSONServer(String firstname, String city) {
-		AddressBookData addressBookData = this.getAddressBookData(firstname);
-		if(addressBookData != null) addressBookData.setCity(city);
-	}
-
-	public void deleteContactFromJSON(String firstname) {
-	     AddressBookData addressBookData = this.getAddressBookData(firstname);
-	      addressBookList.remove(addressBookData);		
 	}
 }

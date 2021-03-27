@@ -11,37 +11,18 @@ public class AddressBookData {
 	private int phonenumber;
 	private String email;
 	private Date date;
-	private int id;
 	
 	public AddressBookData(String firstname, String lastname, String address, String city, String state, int zip,
 			int phonenumber, String email,Date date) {
-            this(firstname,lastname,address,city,state,zip,phonenumber,email);
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.address = address;
+            this.city = city;
+            this.state = state;
+            this.zip = zip;
+            this.phonenumber = phonenumber;
+            this.email = email;
             this.date = date;
-	}
-	public AddressBookData(String firstname, String lastname, String address, String city, String state, int zip,
-			int phonenumber, String email) {
-		this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phonenumber = phonenumber;
-        this.email = email;
-		
-	}
-	public AddressBookData(int id, String firstname, String lastname, String address, String city, String state, int zip,
-			int phonenumber, String email) {
-		this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phonenumber = phonenumber;
-        this.email = email;
-        this.id = id;
-		
 	}
 	public String getFirstname() {
 		return firstname;
@@ -104,12 +85,6 @@ public class AddressBookData {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 
 
